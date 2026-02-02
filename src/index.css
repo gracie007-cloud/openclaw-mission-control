@@ -188,6 +188,35 @@
 	width: 100vw;
 }
 
+/* Mobile layout: collapse 3-column grid into a single column.
+ * Keeps desktop unchanged while making content usable on small screens.
+ */
+@media (max-width: 768px) {
+	.app-container {
+		grid-template-areas:
+			"header"
+			"main"
+			"left-sidebar"
+			"right-sidebar";
+		grid-template-columns: 1fr;
+		grid-template-rows: var(--header-height) minmax(0, 1fr) auto auto;
+		height: 100dvh;
+		overflow-x: hidden;
+		overflow-y: auto;
+	}
+
+	/* Prevent grid children from forcing horizontal overflow */
+	.app-container > * {
+		min-width: 0;
+	}
+
+	/* Sidebars become stacked sections with reasonable max height */
+	.\[grid-area\:left-sidebar\],
+	.\[grid-area\:right-sidebar\] {
+		max-height: 70dvh;
+	}
+}
+
 /* Scrollbar Styling */
 ::-webkit-scrollbar {
 	width: 6px;

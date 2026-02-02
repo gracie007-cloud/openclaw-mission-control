@@ -29,20 +29,20 @@ const Header: React.FC = () => {
 	};
 
 	return (
-		<header className="[grid-area:header] flex items-center justify-between px-6 bg-white border-b border-border z-10">
-			<div className="flex items-center gap-4">
-				<div className="flex items-center gap-2">
+		<header className="[grid-area:header] flex items-center justify-between px-3 md:px-6 bg-white border-b border-border z-10">
+			<div className="flex items-center gap-3 md:gap-4 min-w-0">
+				<div className="flex items-center gap-2 min-w-0">
 					<span className="text-2xl text-[var(--accent-orange)]">◇</span>
-					<h1 className="text-lg font-semibold tracking-wider text-foreground">
+					<h1 className="text-base md:text-lg font-semibold tracking-wider text-foreground truncate">
 						MISSION CONTROL
 					</h1>
 				</div>
-				<div className="text-xs text-muted-foreground bg-muted px-3 py-1 rounded-full font-medium">
+				<div className="hidden sm:block text-xs text-muted-foreground bg-muted px-3 py-1 rounded-full font-medium">
 					SiteName
 				</div>
 			</div>
 
-			<div className="flex items-center gap-10">
+			<div className="hidden md:flex items-center gap-10">
 				<div className="flex flex-col items-center">
 					<div className="text-2xl font-bold text-foreground">11</div>
 					<div className="text-[10px] font-semibold text-muted-foreground tracking-tighter">
@@ -58,8 +58,8 @@ const Header: React.FC = () => {
 				</div>
 			</div>
 
-			<div className="flex items-center gap-6">
-				<button className="flex items-center gap-1.5 bg-muted hover:bg-accent border-none px-4 py-2 rounded-lg text-sm font-medium cursor-pointer text-foreground transition-colors">
+			<div className="flex items-center gap-3 md:gap-6">
+				<button className="hidden md:flex items-center gap-1.5 bg-muted hover:bg-accent border-none px-4 py-2 rounded-lg text-sm font-medium cursor-pointer text-foreground transition-colors">
 					<span className="text-base">📚</span> Docs
 				</button>
 				<div className="text-right">
