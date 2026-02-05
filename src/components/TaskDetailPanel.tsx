@@ -93,8 +93,10 @@ const TaskDetailPanel: React.FC<TaskDetailPanelProps> = ({ taskId, onClose, onPr
     }
   };
 
+  
+
   const docsById = useMemo(() => {
-    const map = new Map<string, (typeof resources)[number]>();
+    const map = new Map<string, NonNullable<typeof resources>[number]>();
     if (resources) {
       resources.forEach((doc) => {
         map.set(doc._id, doc);

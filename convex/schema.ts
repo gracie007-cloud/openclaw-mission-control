@@ -19,6 +19,8 @@ export default defineSchema({
 		systemPrompt: v.optional(v.string()),
 		character: v.optional(v.string()),
 		lore: v.optional(v.string()),
+		workspaceId: v.optional(v.string()),
+		tenantId: v.optional(v.string()),
 	}),
 	tasks: defineTable({
 		title: v.string(),
@@ -38,18 +40,24 @@ export default defineSchema({
 		openclawRunId: v.optional(v.string()),
 		startedAt: v.optional(v.number()),
 		usedCodingTools: v.optional(v.boolean()),
+		workspaceId: v.optional(v.string()),
+		tenantId: v.optional(v.string()),
 	}),
 	messages: defineTable({
 		taskId: v.id("tasks"),
 		fromAgentId: v.id("agents"),
 		content: v.string(),
 		attachments: v.array(v.id("documents")),
+		workspaceId: v.optional(v.string()),
+		tenantId: v.optional(v.string()),
 	}),
 	activities: defineTable({
 		type: v.string(),
 		agentId: v.id("agents"),
 		message: v.string(),
 		targetId: v.optional(v.id("tasks")),
+		workspaceId: v.optional(v.string()),
+		tenantId: v.optional(v.string()),
 	}),
 	documents: defineTable({
 		title: v.string(),
@@ -59,10 +67,37 @@ export default defineSchema({
 		taskId: v.optional(v.id("tasks")),
 		createdByAgentId: v.optional(v.id("agents")),
 		messageId: v.optional(v.id("messages")),
+		workspaceId: v.optional(v.string()),
+		tenantId: v.optional(v.string()),
 	}),
 	notifications: defineTable({
 		mentionedAgentId: v.id("agents"),
 		content: v.string(),
 		delivered: v.boolean(),
+		workspaceId: v.optional(v.string()),
+		tenantId: v.optional(v.string()),
 	}),
+	apiTokens: defineTable({
+		tokenHash: v.string(),
+		tokenPrefix: v.string(),
+		tenantId: v.string(),
+		name: v.optional(v.string()),
+		createdAt: v.number(),
+		lastUsedAt: v.optional(v.number()),
+		revokedAt: v.optional(v.number()),
+	})
+		.index("by_tokenHash", ["tokenHash"])
+		.index("by_tenant", ["tenantId"]),
+	tenantSettings: defineTable({
+		tenantId: v.string(),
+		retentionDays: v.number(),
+		onboardingCompletedAt: v.optional(v.number()),
+		createdAt: v.number(),
+		updatedAt: v.number(),
+	}).index("by_tenant", ["tenantId"]),
+	rateLimits: defineTable({
+		tenantId: v.string(),
+		windowStartMs: v.number(),
+		count: v.number(),
+	}).index("by_tenant", ["tenantId"]),
 });

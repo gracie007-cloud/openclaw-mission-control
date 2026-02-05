@@ -82,7 +82,7 @@ const AgentsSidebar: React.FC<AgentsSidebarProps> = ({
 				<div className="px-6 py-3 border-b border-border">
 					<button
 						type="button"
-						onClick={onAddTask}
+						onClick={() => onAddTask?.()}
 						className="w-full flex items-center justify-center gap-1.5 px-3 py-2 text-sm font-semibold text-white bg-[var(--accent-blue)] rounded-lg hover:opacity-90 transition-opacity"
 					>
 						<span className="text-base leading-none">+</span> Add Task
