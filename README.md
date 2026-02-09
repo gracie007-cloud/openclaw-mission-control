@@ -146,8 +146,12 @@ Payload format:
 
 *Mission Control // Secure Terminal Access // Ref: 2026*
 
+---
+
+## ☕ Support
+If this project helped you, consider buying me a coffee:  
+👉 https://buymeacoffee.com/manishrana
+
+
 ## 🌟 GitHub Stars
-
-## Star History
-
 [![Star History Chart](https://api.star-history.com/svg?repos=manish-raana/openclaw-mission-control&type=date&legend=top-left)](https://www.star-history.com/#manish-raana/openclaw-mission-control&type=date&legend=top-left)
